@@ -1,0 +1,194 @@
+ /* Custom Premium Black & Gold DJ Styling with Active Moving Lights */
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #050505; /* Deep solid black */
+    color: #e0e0e0;
+    position: relative;
+    overflow-x: hidden;
+}
+
+/* Dynamic DJ Laser/Spotlight Effects in Background */
+body::before, body::after {
+    content: "";
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    z-index: -1;
+    opacity: 0.15;
+    pointer-events: none;
+}
+
+body::before {
+    background: conic-gradient(from 90deg at 30% 20%, transparent, rgba(212, 175, 55, 0.4), transparent 60%);
+    animation: spinLaserLeft 12s linear infinite;
+}
+
+body::after {
+    background: conic-gradient(from 270deg at 70% 80%, transparent, rgba(0, 150, 255, 0.3), transparent 40%);
+    animation: spinLaserRight 15s linear infinite;
+}
+
+@keyframes spinLaserLeft {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes spinLaserRight {
+    0% { transform: rotate(360deg); }
+    100% { transform: rotate(0deg); }
+}
+
+header {
+    background: linear-gradient(135deg, #111111 0%, #000000 100%);
+    color: #fff;
+    padding: 50px 20px;
+    text-align: center;
+    border-bottom: 3px solid #d4af37;
+}
+
+header h1 {
+    margin: 0;
+    font-size: 3.5rem;
+    letter-spacing: 3px;
+    color: #d4af37;
+    text-shadow: 0 0 15px rgba(212, 175, 55, 0.5);
+    text-transform: uppercase;
+}
+
+header p {
+    font-size: 1.1rem;
+    color: #b3b3b3;
+    margin-top: 12px;
+}
+
+.container {
+    max-width: 900px;
+    margin: 40px auto;
+    padding: 30px;
+    background: rgba(15, 15, 15, 0.95);
+    border: 1px solid #222;
+    border-radius: 8px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.8);
+}
+
+h2 {
+    color: #d4af37;
+    border-bottom: 1px solid #333;
+    padding-bottom: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* Interactive Calendar Checking System */
+.calendar-box {
+    background: #0a0a0a;
+    border: 1px solid #333;
+    padding: 30px 20px;
+    text-align: center;
+    border-radius: 6px;
+}
+
+.date-picker {
+    background: #151515;
+    color: #fff;
+    border: 2px solid #d4af37;
+    padding: 12px 20px;
+    font-size: 1.1rem;
+    border-radius: 4px;
+    color-scheme: dark;
+}
+
+.btn-check {
+    background: #d4af37;
+    color: #000;
+    border: none;
+    padding: 12px 25px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-left: 10px;
+}
+
+.status-message {
+    margin-top: 20px;
+    font-size: 1.3rem;
+    font-weight: bold;
+}
+.status-available { color: #00ff88; }
+.status-booked { color: #ff3366; }
+
+/* Packages */
+.package-tier {
+    background-color: #0a0a0a;
+    border: 1px solid #333;
+    padding: 25px;
+    margin-bottom: 20px;
+    border-radius: 6px;
+}
+
+.price-tag {
+    display: inline-block;
+    background: #d4af37;
+    color: #000;
+    padding: 6px 14px;
+    border-radius: 4px;
+    font-weight: bold;
+}
+
+.min-hours {
+    color: #d4af37;
+    font-weight: bold;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    margin-left: 10px;
+}
+
+/* Interactive Review Feed Design */
+.review-form {
+    background: #0a0a0a;
+    padding: 20px;
+    border: 1px solid #333;
+    border-radius: 6px;
+    margin-bottom: 30px;
+}
+
+.review-form input, .review-form textarea {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    background: #151515;
+    border: 1px solid #444;
+    color: #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+.review-card {
+    background: #0a0a0a;
+    border-left: 4px solid #d4af37;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 0 6px 6px 0;
+}
+
+.review-media img, .review-media video {
+    max-width: 200px;
+    max-height: 150px;
+    margin-top: 10px;
+    margin-right: 10px;
+    border-radius: 4px;
+    border: 1px solid #333;
+}
+
+.contact-info {
+    background: #0a0a0a;
+    border: 1px solid #d4af37;
+    padding: 30px;
+    border-radius: 6px;
+}
+

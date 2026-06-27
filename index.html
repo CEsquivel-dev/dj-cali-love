@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DJ Cali Love | Professional DJ Services</title>
+    <style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            padding: 20px;
+        }
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #141414;
+            padding: 30px;
+            border-radius: 12px;
+            border: 1px solid #d4af37;
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.2);
+        }
+        h1 {
+            color: #d4af37;
+            text-align: center;
+            font-size: 2.5rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            text-shadow: 0 0 15px rgba(212, 175, 55, 0.6);
+            margin-bottom: 5px;
+        }
+        h2, h3 {
+            color: #d4af37;
+            text-align: center;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+        .form-section {
+            margin-bottom: 30px;
+            padding: 25px;
+            background: #1c1c1c;
+            border-radius: 10px;
+            border: 1px solid #2a2a2a;
+            box-shadow: inset 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        .btn-check {
+            background: linear-gradient(135deg, #d4af37 0%, #aa851c 100%);
+            color: #000000;
+            border: none;
+            padding: 12px 20px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border-radius: 6px;
+            cursor: pointer;
+            width: 100%;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.3);
+            transition: all 0.3s ease;
+        }
+        .btn-check:hover {
+            box-shadow: 0 0 20px rgba(212, 175, 55, 0.7);
+            transform: translateY(-1px);
+        }
+        .status-message {
+            padding: 15px;
+            margin-top: 15px;
+            border-radius: 6px;
+            text-align: center;
+            font-weight: bold;
+        }
+        .available {
+            background-color: rgba(39, 174, 96, 0.2);
+            color: #2ecc71;
+            border: 1px solid #27ae60;
+            text-shadow: 0 0 5px rgba(46, 204, 113, 0.4);
+        }
+        .booked {
+            background-color: rgba(192, 41, 43, 0.2);
+            color: #e74c3c;
+            border: 1px solid #c0392b;
+            text-shadow: 0 0 5px rgba(231, 76, 60, 0.4);
+        }
+        .package-card {
+            background: #141414;
+            border: 1px solid #d4af37;
+            padding: 20px;
+            margin-bottom: 15px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(212, 175, 55, 0.1);
+        }
+        .package-price {
+            color: #d4af37;
+            font-size: 1.3rem;
+            font-weight: bold;
+            float: right;
+            text-shadow: 0 0 8px rgba(212, 175, 55, 0.5);
+        }
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        .gallery-item {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            border: 1px solid #d4af37;
+            background: #000;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.15);
+        }
+        .review-card {
+            background: #1c1c1c;
+            border-left: 4px solid #d4af37;
+            padding: 15px;
+            margin-bottom: 20px;
+            border-radius: 0 8px 8px 0;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+        }
+        input, textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            background: #141414;
+            border: 1px solid #333;
+            color: #fff;
+            border-radius: 6px;
+            box-sizing: border-box;
+            transition: border 0.3s ease;
+        }
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: #d4af37;
+            box-shadow: 0 0 8px rgba(212, 175, 55, 0.4);
+        }
+        .contact-info {
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 25px;
+            border-top: 1px solid #d4af37;
+            box-shadow: 0 -10px 15px rgba(212, 175, 55, 0.05);
+        }
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+        li {
+            margin: 12px 0;
+            font-size: 1.1rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>DJ CALI LOVE</h1>
+        <p style="text-align: center; color: #aaa; letter-spacing: 1px; margin-bottom: 30px;">Premium Sound & Dynamic Lighting Services</p>
+
+        <div class="form-section">
+            <h2>Check Event Availability / Verificar Fecha</h2>
+            <form action="/check-date" method="POST">
+                <input type="date" name="event_date" required value="{{ selected_date if selected_date else '' }}">
+                <button type="submit" class="btn-check">Check Date</button>
+            </form>
+
+            {% if status == 'available' %}
+                <div class="status-message available">
+                    🎉 Clear for Launch! {{ selected_date }} is AVAILABLE! Book your event today!
+                </div>
+            {% elif status == 'booked' %}
+                <div class="status-message booked">
+                    🔒 Date Reserved. {{ selected_date }} is currently booked. Please try another date!
+                </div>
+            {% endif %}
+        </div>
+
+        <div class="form-section">
+            <h2>Our DJ Packages / Nuestros Paquetes</h2>
+            
+            <div class="package-card">
+                <span class="package-price">Minimal</span>
+                <h3>4-Hour Package</h3>
+                <p style="color: #ccc;">Perfect for intimate gatherings, smaller halls, or condensed timelines. Includes professional sound reinforcement, crisp audio coverage, and basic atmospheric dance floor accent lighting.</p>
+            </div>
+
+            <div class="package-card">
+                <span class="package-price">Premium</span>
+                <h3>Full Event Package</h3>
+                <p style="color: #ccc;">Complete multi-hour coverage designed for larger setups. Features full venue club-style dynamic light layouts, powerful subwoofers, wireless microphone hosting coordination, and custom music sets.</p>
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>DJ Cali Love In Action / Nuestro Trabajo</h2>
+            <p style="text-align: center; color: #aaa; font-size: 0.9rem; margin-top: -10px;">Check out footage from our recent live events!</p>
+            
+            <div class="gallery-grid">
+                {% if work_files %}
+                    {% for file in work_files %}
+                        {% if file.lower().endswith('.mp4') or file.lower().endswith('.mov') or file.lower().endswith('.avi') %}
+                            <video src="{{ url_for('static', filename='work/' + file) }}" controls class="gallery-item"></video>
+                        {% else %}
+                            <img src="{{ url_for('static', filename='work/' + file) }}" alt="DJ Cali Love Performance" class="gallery-item">
+                        {% endif %}
+                    {% endfor %}
+                {% else %}
+                    <p style="text-align: center; grid-column: 1/-1; color: #777; font-style: italic;">Gallery folder is currently empty. Drop some files into static/work to see them here!</p>
+                {% endif %}
+            </div>
+        </div>
+
+        <div class="form-section">
+            <h2>Leave a Review / Dejar una Reseña</h2>
+            <form action="/add-review" method="POST" enctype="multipart/form-data">
+                <input type="text" name="client_name" placeholder="Your Name" required>
+                <textarea name="review_text" rows="4" placeholder="Tell us about your event experience..." required></textarea>
+                
+                <label style="display:block; margin-bottom:8px; font-size:0.9rem; color: #aaa;">Upload Photos or Videos from the Party:</label>
+                <input type="file" name="review_file" accept="image/*,video/*">
+                
+                <button type="submit" class="btn-check">Submit Review</button>
+            </form>
+        </div>
+
+        <h3>Recent Reviews</h3>
+        <div class="reviews-list">
+            {% if reviews %}
+                {% for review in reviews %}
+                    <div class="review-card">
+                        <strong style="color: #d4af37;">{{ review.name }}</strong>
+                        <p style="margin: 5px 0; color: #eee;">{{ review.text }}</p>
+                        
+                        <div class="review-media">
+                            {% if review.file_path %}
+                                {% if review.file_path.lower().endswith('.mp4') or review.file_path.lower().endswith('.mov') or review.file_path.lower().endswith('.avi') %}
+                                    <video src="{{ url_for('static', filename='uploads/' + review.file_path) }}" controls style="max-width: 100%; max-height: 250px; border-radius: 6px; margin-top: 8px; border: 1px solid #d4af37; box-shadow: 0 0 10px rgba(212,175,55,0.2);"></video>
+                                {% else %}
+                                    <img src="{{ url_for('static', filename='uploads/' + review.file_path) }}" alt="Review Media" style="max-width: 100%; max-height: 250px; border-radius: 6px; margin-top: 8px; border: 1px solid #d4af37; box-shadow: 0 0 10px rgba(212,175,55,0.2);">
+                                {% endif %}
+                            {% endif %}
+                        </div>
+                    </div>
+                {% endfor %}
+            {% else %}
+                <p style="text-align: center; color: #777;">No reviews posted yet.</p>
+            {% endif %}
+        </div>
+
+        <div class="contact-info">
+            <h2>Book DJ Cali Love / Reservaciones</h2>
+            <ul>
+                <li><strong>Jorge Perez (DJ):</strong> 626-426-2424</li>
+                <li><strong>Booking Coordinator:</strong> 626-366-4720</li>
+            </ul>
+        </div>
+    </div>
+
+</body>
+</html>
+
