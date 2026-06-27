@@ -36,7 +36,7 @@ def home():
     work_dir = os.path.join('static', 'work')
     work_files = os.listdir(work_dir) if os.path.exists(work_dir) else []
         
-    return render_template('index.html', status=None, reviews=REVIEWS_DATABASE, work_files=work_files)
+    return render_template('index.html')
 
 @app.route('/check-date', methods=['POST'])
 def check_date():
